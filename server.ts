@@ -18,7 +18,9 @@ app.use(express.urlencoded());
 
 const port = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
 
-const mongoDbUri = process.env.MONGODB_URI || "mongodb://mongo-db:27017/trivia";
+const mongoDbUri =
+  process.env.MONGODB_URI ||
+  `mongodb://${process.env.MONGODB_USER}:${process.env.MONGODB_PASSWORD}@${process.env.MONGODB_HOST}:27017/${process.env.MONGODB_DATABASE}?authSource=admin`;
 console.log(mongoDbUri);
 const db = mongoose.connect(mongoDbUri, {
   connectTimeoutMS: 1000,
