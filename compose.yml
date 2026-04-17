@@ -4,6 +4,7 @@ services:
     build:
       context: ../mongo-front
       dockerfile: Dockerfile
+    image: mongo-front
     ports:
       - "80:80"
     networks:
@@ -24,6 +25,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    image: mongo-back
     ports:
       - "3000:3000"
     environment:
@@ -83,6 +85,9 @@ services:
 
 volumes:
   mongo-db-vol:
+    name: mongo-db-vol
 networks:
   mongo-front-network:
+    name: mongo-front-network
   mongo-back-network:
+    name: mongo-back-network
